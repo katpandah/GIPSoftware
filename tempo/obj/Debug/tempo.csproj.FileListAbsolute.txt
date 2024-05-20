@@ -1,0 +1,10 @@
+C:\Users\vanaelbrouck_bo\Documents\School\Software\VisualStudio\tempo\bin\Debug\tempo.exe.config
+C:\Users\vanaelbrouck_bo\Documents\School\Software\VisualStudio\tempo\bin\Debug\tempo.exe
+C:\Users\vanaelbrouck_bo\Documents\School\Software\VisualStudio\tempo\bin\Debug\tempo.pdb
+C:\Users\vanaelbrouck_bo\Documents\School\Software\VisualStudio\tempo\obj\Debug\tempo.csproj.AssemblyReference.cache
+C:\Users\vanaelbrouck_bo\Documents\School\Software\VisualStudio\tempo\obj\Debug\tempo.Form1.resources
+C:\Users\vanaelbrouck_bo\Documents\School\Software\VisualStudio\tempo\obj\Debug\tempo.Properties.Resources.resources
+C:\Users\vanaelbrouck_bo\Documents\School\Software\VisualStudio\tempo\obj\Debug\tempo.csproj.GenerateResource.cache
+C:\Users\vanaelbrouck_bo\Documents\School\Software\VisualStudio\tempo\obj\Debug\tempo.csproj.CoreCompileInputs.cache
+C:\Users\vanaelbrouck_bo\Documents\School\Software\VisualStudio\tempo\obj\Debug\tempo.exe
+C:\Users\vanaelbrouck_bo\Documents\School\Software\VisualStudio\tempo\obj\Debug\tempo.pdb
