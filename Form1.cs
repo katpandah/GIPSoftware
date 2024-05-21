@@ -81,6 +81,7 @@ namespace tempo
             {
                 tabControl1.SelectedTab = Ticket2;
             }
+            lblOuderid.Text = "Ouderid: " + ouderid;
         }
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
@@ -167,6 +168,23 @@ namespace tempo
             sqlCommand.ExecuteNonQuery();
             connection.Close();
             tabControl1.SelectedTab = Main;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (txtAdminUser.Text == "User" && txtAdminPassw.Text == "Passw")
+            {
+                tabControl1.SelectedTab = AdminPanel;
+            }
+            else
+            {
+                lblWrong.Visible = true;
+            }
+        }
+
+        private void Admin_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

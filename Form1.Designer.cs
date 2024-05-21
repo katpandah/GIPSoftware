@@ -49,8 +49,8 @@
             this.Admin = new System.Windows.Forms.TabPage();
             this.button5 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtAdminPassw = new System.Windows.Forms.TextBox();
+            this.txtAdminUser = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.help = new System.Windows.Forms.TabPage();
@@ -68,6 +68,17 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.lblOuderid = new System.Windows.Forms.Label();
+            this.lblWrong = new System.Windows.Forms.Label();
+            this.AdminPanel = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.Main.SuspendLayout();
             this.Choose.SuspendLayout();
@@ -76,6 +87,8 @@
             this.help.SuspendLayout();
             this.Ticket2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.AdminPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -86,6 +99,7 @@
             this.tabControl1.Controls.Add(this.Admin);
             this.tabControl1.Controls.Add(this.help);
             this.tabControl1.Controls.Add(this.Ticket2);
+            this.tabControl1.Controls.Add(this.AdminPanel);
             this.tabControl1.Location = new System.Drawing.Point(-5, -2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -292,10 +306,11 @@
             // Admin
             // 
             this.Admin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.Admin.Controls.Add(this.lblWrong);
             this.Admin.Controls.Add(this.button5);
             this.Admin.Controls.Add(this.label8);
-            this.Admin.Controls.Add(this.textBox2);
-            this.Admin.Controls.Add(this.textBox1);
+            this.Admin.Controls.Add(this.txtAdminPassw);
+            this.Admin.Controls.Add(this.txtAdminUser);
             this.Admin.Controls.Add(this.label7);
             this.Admin.Controls.Add(this.label5);
             this.Admin.Location = new System.Drawing.Point(4, 22);
@@ -303,6 +318,7 @@
             this.Admin.Size = new System.Drawing.Size(803, 432);
             this.Admin.TabIndex = 3;
             this.Admin.Text = "Admin";
+            this.Admin.Click += new System.EventHandler(this.Admin_Click);
             // 
             // button5
             // 
@@ -317,6 +333,7 @@
             this.button5.Size = new System.Drawing.Size(183, 70);
             this.button5.TabIndex = 13;
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label8
             // 
@@ -329,19 +346,19 @@
             this.label8.TabIndex = 12;
             this.label8.Text = "Admin LogIn";
             // 
-            // textBox2
+            // txtAdminPassw
             // 
-            this.textBox2.Location = new System.Drawing.Point(227, 246);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(177, 20);
-            this.textBox2.TabIndex = 11;
+            this.txtAdminPassw.Location = new System.Drawing.Point(227, 246);
+            this.txtAdminPassw.Name = "txtAdminPassw";
+            this.txtAdminPassw.Size = new System.Drawing.Size(177, 20);
+            this.txtAdminPassw.TabIndex = 11;
             // 
-            // textBox1
+            // txtAdminUser
             // 
-            this.textBox1.Location = new System.Drawing.Point(227, 178);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(177, 20);
-            this.textBox1.TabIndex = 10;
+            this.txtAdminUser.Location = new System.Drawing.Point(227, 178);
+            this.txtAdminUser.Name = "txtAdminUser";
+            this.txtAdminUser.Size = new System.Drawing.Size(177, 20);
+            this.txtAdminUser.TabIndex = 10;
             // 
             // label7
             // 
@@ -431,6 +448,7 @@
             // Ticket2
             // 
             this.Ticket2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.Ticket2.Controls.Add(this.lblOuderid);
             this.Ticket2.Controls.Add(this.comboBox3);
             this.Ticket2.Controls.Add(this.comboBox2);
             this.Ticket2.Controls.Add(this.pictureBox1);
@@ -568,6 +586,129 @@
             this.label17.TabIndex = 22;
             this.label17.Text = "Geef de nodige informatie:";
             // 
+            // lblOuderid
+            // 
+            this.lblOuderid.AutoSize = true;
+            this.lblOuderid.Font = new System.Drawing.Font("Harlow Solid Italic", 28F, System.Drawing.FontStyle.Italic);
+            this.lblOuderid.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.lblOuderid.Location = new System.Drawing.Point(604, 19);
+            this.lblOuderid.Name = "lblOuderid";
+            this.lblOuderid.Size = new System.Drawing.Size(172, 48);
+            this.lblOuderid.TabIndex = 34;
+            this.lblOuderid.Text = "Ouderid: x";
+            // 
+            // lblWrong
+            // 
+            this.lblWrong.AutoSize = true;
+            this.lblWrong.Font = new System.Drawing.Font("Harlow Solid Italic", 28F, System.Drawing.FontStyle.Italic);
+            this.lblWrong.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(153)))), ((int)(((byte)(160)))));
+            this.lblWrong.Location = new System.Drawing.Point(58, 370);
+            this.lblWrong.Name = "lblWrong";
+            this.lblWrong.Size = new System.Drawing.Size(470, 48);
+            this.lblWrong.TabIndex = 14;
+            this.lblWrong.Text = "Wrong username or password";
+            this.lblWrong.Visible = false;
+            // 
+            // AdminPanel
+            // 
+            this.AdminPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.AdminPanel.Controls.Add(this.textBox2);
+            this.AdminPanel.Controls.Add(this.textBox1);
+            this.AdminPanel.Controls.Add(this.comboBox4);
+            this.AdminPanel.Controls.Add(this.button8);
+            this.AdminPanel.Controls.Add(this.label19);
+            this.AdminPanel.Controls.Add(this.label18);
+            this.AdminPanel.Controls.Add(this.label14);
+            this.AdminPanel.Controls.Add(this.dataGridView1);
+            this.AdminPanel.Location = new System.Drawing.Point(4, 22);
+            this.AdminPanel.Name = "AdminPanel";
+            this.AdminPanel.Padding = new System.Windows.Forms.Padding(3);
+            this.AdminPanel.Size = new System.Drawing.Size(803, 432);
+            this.AdminPanel.TabIndex = 6;
+            this.AdminPanel.Text = "AdminPanel";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(13, 118);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(776, 300);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Harlow Solid Italic", 20F, System.Drawing.FontStyle.Italic);
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.label14.Location = new System.Drawing.Point(13, 17);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(77, 34);
+            this.label14.TabIndex = 29;
+            this.label14.Text = "Type:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Harlow Solid Italic", 20F, System.Drawing.FontStyle.Italic);
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.label18.Location = new System.Drawing.Point(13, 68);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(157, 34);
+            this.label18.TabIndex = 30;
+            this.label18.Text = "Kolom(men):";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Harlow Solid Italic", 20F, System.Drawing.FontStyle.Italic);
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.label19.Location = new System.Drawing.Point(413, 17);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(129, 34);
+            this.label19.TabIndex = 31;
+            this.label19.Text = "Waarden:";
+            // 
+            // button8
+            // 
+            this.button8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button8.BackgroundImage")));
+            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.button8.Location = new System.Drawing.Point(419, 54);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(147, 54);
+            this.button8.TabIndex = 32;
+            this.button8.UseVisualStyleBackColor = false;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Items.AddRange(new object[] {
+            "select",
+            "update",
+            "delete",
+            "insert"});
+            this.comboBox4.Location = new System.Drawing.Point(185, 26);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(121, 21);
+            this.comboBox4.TabIndex = 33;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(185, 78);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(204, 20);
+            this.textBox1.TabIndex = 34;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(568, 27);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(177, 20);
+            this.textBox2.TabIndex = 35;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -593,6 +734,9 @@
             this.Ticket2.ResumeLayout(false);
             this.Ticket2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.AdminPanel.ResumeLayout(false);
+            this.AdminPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -616,8 +760,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtAdminPassw;
+        private System.Windows.Forms.TextBox txtAdminUser;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -638,6 +782,17 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label lblOuderid;
+        private System.Windows.Forms.Label lblWrong;
+        private System.Windows.Forms.TabPage AdminPanel;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
     }
 }
 
