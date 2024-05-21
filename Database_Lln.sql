@@ -62,20 +62,20 @@ kindid    			INTEGER(6)  NOT NULL PRIMARY KEY
 ,oudervoornaam		VARCHAR(20)
 ,ouderemailadres 	VARCHAR(40)
 );
-INSERT INTO tblOuders(kindid, ouderid) VALUES (23587,1);
-INSERT INTO tblOuders(kindid, ouderid) VALUES (25956,2);
-INSERT INTO tblOuders(kindid, ouderid) VALUES (26928,3);
-INSERT INTO tblOuders(kindid, ouderid) VALUES (27611,4);
-INSERT INTO tblOuders(kindid, ouderid) VALUES (36680,5);
-INSERT INTO tblOuders(kindid, ouderid) VALUES (65051,6);
-INSERT INTO tblOuders(kindid, ouderid) VALUES (69442,7);
-INSERT INTO tblOuders(kindid, ouderid) VALUES (69510,8);
-INSERT INTO tblOuders(kindid, ouderid) VALUES (69677,9);
-INSERT INTO tblOuders(kindid, ouderid) VALUES (73240,10);
-INSERT INTO tblOuders(kindid, ouderid) VALUES (86734,11);
-INSERT INTO tblOuders(kindid, ouderid) VALUES (90197,12);
-INSERT INTO tblOuders(kindid, ouderid) VALUES (90273,13);
-INSERT INTO tblOuders(kindid, ouderid) VALUES (141299,14);
+INSERT INTO tblOuders(kindid, ouderid, zetelid) VALUES (23587,1,0);
+INSERT INTO tblOuders(kindid, ouderid,zetelid) VALUES (25956,2,0);
+INSERT INTO tblOuders(kindid, ouderid,zetelid) VALUES (26928,3,0);
+INSERT INTO tblOuders(kindid, ouderid,zetelid) VALUES (27611,4,0);
+INSERT INTO tblOuders(kindid, ouderid,zetelid) VALUES (36680,5,0);
+INSERT INTO tblOuders(kindid, ouderid,zetelid) VALUES (65051,6,0);
+INSERT INTO tblOuders(kindid, ouderid,zetelid) VALUES (69442,7,0);
+INSERT INTO tblOuders(kindid, ouderid,zetelid) VALUES (69510,8,0);
+INSERT INTO tblOuders(kindid, ouderid,zetelid) VALUES (69677,9,0);
+INSERT INTO tblOuders(kindid, ouderid,zetelid) VALUES (73240,10,0);
+INSERT INTO tblOuders(kindid, ouderid,zetelid) VALUES (86734,11,0);
+INSERT INTO tblOuders(kindid, ouderid,zetelid) VALUES (90197,12,0);
+INSERT INTO tblOuders(kindid, ouderid,zetelid) VALUES (90273,13,0);
+INSERT INTO tblOuders(kindid, ouderid,zetelid) VALUES (141299,14,0);
 
 
 
