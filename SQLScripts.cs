@@ -8,6 +8,7 @@ namespace tempo
 {
     internal class SQLScripts
     {
-        public static readonly string leerlingen = "SELECT kindnaam,kindvoornaam, ouderid FROM tblleerlingen, tblouders";
+        public static readonly string leerlingen = "SELECT kindnaam,kindvoornaam, kindid FROM tblleerlingen";
+        public static readonly string ouder = "SELECT ouderid,kindid FROM tblouders WHERE kindid=@kindid";
     }
 }

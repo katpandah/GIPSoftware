@@ -65,16 +65,33 @@ namespace tempo
             MySqlCommand cmd = new MySqlCommand(SQLScripts.leerlingen, connection);
             DataSet DS = new DataSet();
             MySqlDataAdapter adapter = new MySqlDataAdapter(SQLScripts.leerlingen, connection);
-            adapter.Fill(DS, "table");
-            DataTable newTable = DS.Tables["table"];
+            adapter.Fill(DS, "tblleerlingen");
+            DataTable newTable = DS.Tables["tblleerlingen"];
             connection.Close();
             bool correct = false;
+            string kindid = "";
             foreach (DataRow dr in newTable.Rows)
             {
                 if (dr["kindnaam"].ToString() == txtNaam.Text && dr["kindvoornaam"].ToString() == txtVoornaam.Text) 
                 {
-                    ouderid = dr["ouderid"].ToString();
+                    kindid = dr["kindid"].ToString();
                     correct = true; break; 
+                }
+                kindid = dr["kindid"].ToString();
+            }
+            connection.Open();
+            cmd = new MySqlCommand(SQLScripts.ouder, connection);
+            cmd.Parameters.AddWithValue("@kindid", kindid);
+            DS = new DataSet();
+            adapter = new MySqlDataAdapter(SQLScripts.ouder, connection);
+            adapter.Fill(DS, "tblouders");
+            newTable = DS.Tables["tblouders"];
+            connection.Close();
+            foreach (DataRow dr in newTable.Rows)
+            {
+                if (dr["kindid"].ToString() == kindid)
+                {
+                    ouderid = dr["ouderid"].ToString();
                 }
             }
             if (correct)
