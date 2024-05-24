@@ -72,15 +72,20 @@ namespace tempo
             string kindid = "";
             foreach (DataRow dr in newTable.Rows)
             {
-                if (dr["kindnaam"].ToString() == txtNaam.Text && dr["kindvoornaam"].ToString() == txtVoornaam.Text) 
+                if (dr["kindnaam"].ToString() == txtNaam.Text && dr["kindvoornaam"].ToString() == txtVoornaam.Text && dr["kindid"].ToString() == txtKindid.Text) 
                 {
-                    kindid = dr["kindid"].ToString();
-                    correct = true; break; 
+                    kindid = txtKindid.Text;
                 }
                 kindid = dr["kindid"].ToString();
+                correct = true;
+            }
+            if (!correct)
+            {
+                Environment.Exit(0);
             }
             connection.Open();
             cmd = new MySqlCommand(SQLScripts.ouder, connection);
+            kindid = "23587";
             cmd.Parameters.AddWithValue("@kindid", kindid);
             DS = new DataSet();
             adapter = new MySqlDataAdapter(SQLScripts.ouder, connection);
