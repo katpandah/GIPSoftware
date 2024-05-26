@@ -92,3 +92,15 @@ C:\Users\vanaelbrouck_bo\GIPSoftware\obj\Debug\tempo.csproj.CoreCompileInputs.ca
 C:\Users\vanaelbrouck_bo\GIPSoftware\obj\Debug\tempo.csproj.CopyComplete
 C:\Users\vanaelbrouck_bo\GIPSoftware\obj\Debug\tempo.exe
 C:\Users\vanaelbrouck_bo\GIPSoftware\obj\Debug\tempo.pdb
+C:\Users\Kat\GIPSoftware\bin\Debug\MailKit.dll
+C:\Users\Kat\GIPSoftware\bin\Debug\MimeKit.dll
+C:\Users\Kat\GIPSoftware\bin\Debug\System.Formats.Asn1.dll
+C:\Users\Kat\GIPSoftware\bin\Debug\System.ValueTuple.dll
+C:\Users\Kat\GIPSoftware\bin\Debug\MailKit.pdb
+C:\Users\Kat\GIPSoftware\bin\Debug\MailKit.xml
+C:\Users\Kat\GIPSoftware\bin\Debug\MailKit.dll.config
+C:\Users\Kat\GIPSoftware\bin\Debug\MimeKit.pdb
+C:\Users\Kat\GIPSoftware\bin\Debug\MimeKit.xml
+C:\Users\Kat\GIPSoftware\bin\Debug\MimeKit.dll.config
+C:\Users\Kat\GIPSoftware\bin\Debug\System.Formats.Asn1.xml
+C:\Users\Kat\GIPSoftware\bin\Debug\System.ValueTuple.xml
