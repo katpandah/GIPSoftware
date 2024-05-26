@@ -62,6 +62,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.Ticket2 = new System.Windows.Forms.TabPage();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.lblOuderid = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -73,6 +76,9 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.AdminPanel = new System.Windows.Forms.TabPage();
+            this.btnSET = new System.Windows.Forms.Button();
+            this.txtSET = new System.Windows.Forms.TextBox();
+            this.lblSET = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.txtWaarden = new System.Windows.Forms.TextBox();
@@ -83,17 +89,31 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.dgvInfo = new System.Windows.Forms.DataGridView();
-            this.txtSET = new System.Windows.Forms.TextBox();
-            this.lblSET = new System.Windows.Forms.Label();
-            this.btnSET = new System.Windows.Forms.Button();
             this.Email = new System.Windows.Forms.TabPage();
+            this.lblResultEmail = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtemail = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.button12 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
-            this.button12 = new System.Windows.Forms.Button();
             this.Payment = new System.Windows.Forms.TabPage();
             this.button11 = new System.Windows.Forms.Button();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txtemail = new System.Windows.Forms.TextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.lblFout = new System.Windows.Forms.Label();
+            this.End = new System.Windows.Forms.TabPage();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.button13 = new System.Windows.Forms.Button();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.TabControl1.SuspendLayout();
             this.Main.SuspendLayout();
             this.Choose.SuspendLayout();
@@ -106,6 +126,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvInfo)).BeginInit();
             this.Email.SuspendLayout();
             this.Payment.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            this.End.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.SuspendLayout();
             // 
             // TabControl1
@@ -119,6 +149,7 @@
             this.TabControl1.Controls.Add(this.AdminPanel);
             this.TabControl1.Controls.Add(this.Email);
             this.TabControl1.Controls.Add(this.Payment);
+            this.TabControl1.Controls.Add(this.End);
             this.TabControl1.Location = new System.Drawing.Point(-5, -2);
             this.TabControl1.Name = "TabControl1";
             this.TabControl1.SelectedIndex = 0;
@@ -129,13 +160,14 @@
             // 
             this.Main.AccessibleName = "";
             this.Main.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.Main.Controls.Add(this.pictureBox2);
             this.Main.Controls.Add(this.button1);
             this.Main.Controls.Add(this.label4);
             this.Main.Controls.Add(this.label3);
             this.Main.Location = new System.Drawing.Point(4, 22);
             this.Main.Name = "Main";
             this.Main.Padding = new System.Windows.Forms.Padding(3);
-            this.Main.Size = new System.Drawing.Size(779, 432);
+            this.Main.Size = new System.Drawing.Size(1686, 432);
             this.Main.TabIndex = 0;
             this.Main.Text = "Main";
             // 
@@ -147,7 +179,7 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
-            this.button1.Location = new System.Drawing.Point(280, 301);
+            this.button1.Location = new System.Drawing.Point(280, 348);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(183, 70);
             this.button1.TabIndex = 4;
@@ -159,7 +191,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Harlow Solid Italic", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
-            this.label4.Location = new System.Drawing.Point(275, 207);
+            this.label4.Location = new System.Drawing.Point(275, 247);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(200, 25);
             this.label4.TabIndex = 3;
@@ -170,7 +202,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Harlow Solid Italic", 57F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
-            this.label3.Location = new System.Drawing.Point(131, 111);
+            this.label3.Location = new System.Drawing.Point(131, 151);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(496, 96);
             this.label3.TabIndex = 2;
@@ -179,6 +211,7 @@
             // Choose
             // 
             this.Choose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.Choose.Controls.Add(this.pictureBox3);
             this.Choose.Controls.Add(this.button2);
             this.Choose.Controls.Add(this.btnAdmin);
             this.Choose.Controls.Add(this.btnTicket);
@@ -186,7 +219,7 @@
             this.Choose.Location = new System.Drawing.Point(4, 22);
             this.Choose.Name = "Choose";
             this.Choose.Padding = new System.Windows.Forms.Padding(3);
-            this.Choose.Size = new System.Drawing.Size(779, 432);
+            this.Choose.Size = new System.Drawing.Size(1686, 432);
             this.Choose.TabIndex = 1;
             this.Choose.Text = "Choose";
             // 
@@ -247,6 +280,7 @@
             // Ticket
             // 
             this.Ticket.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.Ticket.Controls.Add(this.pictureBox4);
             this.Ticket.Controls.Add(this.txtKindid);
             this.Ticket.Controls.Add(this.label20);
             this.Ticket.Controls.Add(this.button6);
@@ -258,7 +292,7 @@
             this.Ticket.Location = new System.Drawing.Point(4, 22);
             this.Ticket.Name = "Ticket";
             this.Ticket.Padding = new System.Windows.Forms.Padding(3);
-            this.Ticket.Size = new System.Drawing.Size(779, 432);
+            this.Ticket.Size = new System.Drawing.Size(1686, 432);
             this.Ticket.TabIndex = 2;
             this.Ticket.Text = "Ticket";
             // 
@@ -345,6 +379,7 @@
             // Admin
             // 
             this.Admin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.Admin.Controls.Add(this.pictureBox5);
             this.Admin.Controls.Add(this.lblWrong);
             this.Admin.Controls.Add(this.button5);
             this.Admin.Controls.Add(this.label8);
@@ -354,7 +389,7 @@
             this.Admin.Controls.Add(this.label5);
             this.Admin.Location = new System.Drawing.Point(4, 22);
             this.Admin.Name = "Admin";
-            this.Admin.Size = new System.Drawing.Size(779, 432);
+            this.Admin.Size = new System.Drawing.Size(1686, 432);
             this.Admin.TabIndex = 3;
             this.Admin.Text = "Admin";
             this.Admin.Click += new System.EventHandler(this.Admin_Click);
@@ -362,11 +397,11 @@
             // lblWrong
             // 
             this.lblWrong.AutoSize = true;
-            this.lblWrong.Font = new System.Drawing.Font("Harlow Solid Italic", 28F, System.Drawing.FontStyle.Italic);
+            this.lblWrong.Font = new System.Drawing.Font("Harlow Solid Italic", 20F, System.Drawing.FontStyle.Italic);
             this.lblWrong.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(153)))), ((int)(((byte)(160)))));
-            this.lblWrong.Location = new System.Drawing.Point(58, 370);
+            this.lblWrong.Location = new System.Drawing.Point(176, 269);
             this.lblWrong.Name = "lblWrong";
-            this.lblWrong.Size = new System.Drawing.Size(470, 48);
+            this.lblWrong.Size = new System.Drawing.Size(333, 34);
             this.lblWrong.TabIndex = 14;
             this.lblWrong.Text = "Wrong username or password";
             this.lblWrong.Visible = false;
@@ -436,6 +471,7 @@
             // help
             // 
             this.help.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.help.Controls.Add(this.pictureBox6);
             this.help.Controls.Add(this.button4);
             this.help.Controls.Add(this.label10);
             this.help.Controls.Add(this.label9);
@@ -443,7 +479,7 @@
             this.help.Location = new System.Drawing.Point(4, 22);
             this.help.Name = "help";
             this.help.Padding = new System.Windows.Forms.Padding(3);
-            this.help.Size = new System.Drawing.Size(779, 432);
+            this.help.Size = new System.Drawing.Size(1686, 432);
             this.help.TabIndex = 4;
             this.help.Text = "Help";
             // 
@@ -499,6 +535,11 @@
             // Ticket2
             // 
             this.Ticket2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.Ticket2.Controls.Add(this.lblFout);
+            this.Ticket2.Controls.Add(this.pictureBox7);
+            this.Ticket2.Controls.Add(this.comboBox6);
+            this.Ticket2.Controls.Add(this.comboBox5);
+            this.Ticket2.Controls.Add(this.comboBox4);
             this.Ticket2.Controls.Add(this.lblOuderid);
             this.Ticket2.Controls.Add(this.comboBox3);
             this.Ticket2.Controls.Add(this.comboBox2);
@@ -512,16 +553,44 @@
             this.Ticket2.Location = new System.Drawing.Point(4, 22);
             this.Ticket2.Name = "Ticket2";
             this.Ticket2.Padding = new System.Windows.Forms.Padding(3);
-            this.Ticket2.Size = new System.Drawing.Size(779, 432);
+            this.Ticket2.Size = new System.Drawing.Size(1686, 432);
             this.Ticket2.TabIndex = 5;
             this.Ticket2.Text = "Ticket2";
+            this.Ticket2.Click += new System.EventHandler(this.Ticket2_Click);
+            // 
+            // comboBox6
+            // 
+            this.comboBox6.FormattingEnabled = true;
+            this.comboBox6.Location = new System.Drawing.Point(189, 320);
+            this.comboBox6.Name = "comboBox6";
+            this.comboBox6.Size = new System.Drawing.Size(121, 21);
+            this.comboBox6.TabIndex = 40;
+            this.comboBox6.Visible = false;
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Location = new System.Drawing.Point(189, 286);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(121, 21);
+            this.comboBox5.TabIndex = 38;
+            this.comboBox5.Visible = false;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(189, 252);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(121, 21);
+            this.comboBox4.TabIndex = 36;
+            this.comboBox4.Visible = false;
             // 
             // lblOuderid
             // 
             this.lblOuderid.AutoSize = true;
             this.lblOuderid.Font = new System.Drawing.Font("Harlow Solid Italic", 28F, System.Drawing.FontStyle.Italic);
             this.lblOuderid.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
-            this.lblOuderid.Location = new System.Drawing.Point(594, 19);
+            this.lblOuderid.Location = new System.Drawing.Point(579, 19);
             this.lblOuderid.Name = "lblOuderid";
             this.lblOuderid.Size = new System.Drawing.Size(172, 48);
             this.lblOuderid.TabIndex = 34;
@@ -530,7 +599,7 @@
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(189, 233);
+            this.comboBox3.Location = new System.Drawing.Point(189, 218);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(121, 21);
             this.comboBox3.TabIndex = 33;
@@ -560,7 +629,7 @@
             "18",
             "19",
             "20"});
-            this.comboBox2.Location = new System.Drawing.Point(189, 168);
+            this.comboBox2.Location = new System.Drawing.Point(189, 159);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 32;
@@ -588,6 +657,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 30;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label13
             // 
@@ -620,7 +690,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Harlow Solid Italic", 20F, System.Drawing.FontStyle.Italic);
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
-            this.label15.Location = new System.Drawing.Point(15, 223);
+            this.label15.Location = new System.Drawing.Point(15, 208);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(124, 34);
             this.label15.TabIndex = 24;
@@ -631,7 +701,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Harlow Solid Italic", 20F, System.Drawing.FontStyle.Italic);
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
-            this.label16.Location = new System.Drawing.Point(15, 155);
+            this.label16.Location = new System.Drawing.Point(15, 146);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(62, 34);
             this.label16.TabIndex = 23;
@@ -667,9 +737,45 @@
             this.AdminPanel.Location = new System.Drawing.Point(4, 22);
             this.AdminPanel.Name = "AdminPanel";
             this.AdminPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.AdminPanel.Size = new System.Drawing.Size(779, 432);
+            this.AdminPanel.Size = new System.Drawing.Size(1686, 432);
             this.AdminPanel.TabIndex = 6;
             this.AdminPanel.Text = "AdminPanel";
+            this.AdminPanel.Click += new System.EventHandler(this.AdminPanel_Click);
+            // 
+            // btnSET
+            // 
+            this.btnSET.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSET.BackgroundImage")));
+            this.btnSET.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSET.FlatAppearance.BorderSize = 0;
+            this.btnSET.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSET.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.btnSET.Location = new System.Drawing.Point(751, 67);
+            this.btnSET.Name = "btnSET";
+            this.btnSET.Size = new System.Drawing.Size(27, 29);
+            this.btnSET.TabIndex = 41;
+            this.btnSET.UseVisualStyleBackColor = false;
+            this.btnSET.Visible = false;
+            this.btnSET.Click += new System.EventHandler(this.btnSET_Click);
+            // 
+            // txtSET
+            // 
+            this.txtSET.Location = new System.Drawing.Point(628, 72);
+            this.txtSET.Name = "txtSET";
+            this.txtSET.Size = new System.Drawing.Size(113, 20);
+            this.txtSET.TabIndex = 40;
+            this.txtSET.Visible = false;
+            // 
+            // lblSET
+            // 
+            this.lblSET.AutoSize = true;
+            this.lblSET.Font = new System.Drawing.Font("Harlow Solid Italic", 20F, System.Drawing.FontStyle.Italic);
+            this.lblSET.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.lblSET.Location = new System.Drawing.Point(572, 62);
+            this.lblSET.Name = "lblSET";
+            this.lblSET.Size = new System.Drawing.Size(50, 34);
+            this.lblSET.TabIndex = 39;
+            this.lblSET.Text = "set:";
+            this.lblSET.Visible = false;
             // 
             // button9
             // 
@@ -789,44 +895,13 @@
             this.dgvInfo.Size = new System.Drawing.Size(760, 300);
             this.dgvInfo.TabIndex = 0;
             // 
-            // txtSET
-            // 
-            this.txtSET.Location = new System.Drawing.Point(628, 72);
-            this.txtSET.Name = "txtSET";
-            this.txtSET.Size = new System.Drawing.Size(113, 20);
-            this.txtSET.TabIndex = 40;
-            this.txtSET.Visible = false;
-            // 
-            // lblSET
-            // 
-            this.lblSET.AutoSize = true;
-            this.lblSET.Font = new System.Drawing.Font("Harlow Solid Italic", 20F, System.Drawing.FontStyle.Italic);
-            this.lblSET.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
-            this.lblSET.Location = new System.Drawing.Point(572, 62);
-            this.lblSET.Name = "lblSET";
-            this.lblSET.Size = new System.Drawing.Size(50, 34);
-            this.lblSET.TabIndex = 39;
-            this.lblSET.Text = "set:";
-            this.lblSET.Visible = false;
-            // 
-            // btnSET
-            // 
-            this.btnSET.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSET.BackgroundImage")));
-            this.btnSET.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSET.FlatAppearance.BorderSize = 0;
-            this.btnSET.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSET.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
-            this.btnSET.Location = new System.Drawing.Point(747, 67);
-            this.btnSET.Name = "btnSET";
-            this.btnSET.Size = new System.Drawing.Size(27, 29);
-            this.btnSET.TabIndex = 41;
-            this.btnSET.UseVisualStyleBackColor = false;
-            this.btnSET.Visible = false;
-            this.btnSET.Click += new System.EventHandler(this.btnSET_Click);
-            // 
             // Email
             // 
             this.Email.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.Email.Controls.Add(this.pictureBox8);
+            this.Email.Controls.Add(this.lblResultEmail);
+            this.Email.Controls.Add(this.textBox1);
+            this.Email.Controls.Add(this.label23);
             this.Email.Controls.Add(this.txtemail);
             this.Email.Controls.Add(this.label22);
             this.Email.Controls.Add(this.button12);
@@ -838,6 +913,68 @@
             this.Email.Size = new System.Drawing.Size(1686, 432);
             this.Email.TabIndex = 7;
             this.Email.Text = "Email";
+            // 
+            // lblResultEmail
+            // 
+            this.lblResultEmail.AutoSize = true;
+            this.lblResultEmail.Location = new System.Drawing.Point(39, 311);
+            this.lblResultEmail.Name = "lblResultEmail";
+            this.lblResultEmail.Size = new System.Drawing.Size(0, 13);
+            this.lblResultEmail.TabIndex = 38;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(152, 230);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(177, 20);
+            this.textBox1.TabIndex = 37;
+            this.textBox1.Visible = false;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Harlow Solid Italic", 20F, System.Drawing.FontStyle.Italic);
+            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.label23.Location = new System.Drawing.Point(23, 220);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(95, 34);
+            this.label23.TabIndex = 36;
+            this.label23.Text = "Naam:";
+            this.label23.Visible = false;
+            // 
+            // txtemail
+            // 
+            this.txtemail.Location = new System.Drawing.Point(152, 183);
+            this.txtemail.Name = "txtemail";
+            this.txtemail.Size = new System.Drawing.Size(177, 20);
+            this.txtemail.TabIndex = 35;
+            this.txtemail.Visible = false;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Harlow Solid Italic", 20F, System.Drawing.FontStyle.Italic);
+            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.label22.Location = new System.Drawing.Point(23, 173);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(80, 34);
+            this.label22.TabIndex = 34;
+            this.label22.Text = "email:";
+            this.label22.Visible = false;
+            // 
+            // button12
+            // 
+            this.button12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button12.BackgroundImage")));
+            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button12.FlatAppearance.BorderSize = 0;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.button12.Location = new System.Drawing.Point(243, 84);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(123, 70);
+            this.button12.TabIndex = 13;
+            this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // button3
             // 
@@ -865,29 +1002,16 @@
             this.label21.Text = "Wil je graag een E-mail confirmatie van je ticket?";
             this.label21.Click += new System.EventHandler(this.label21_Click);
             // 
-            // button12
-            // 
-            this.button12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button12.BackgroundImage")));
-            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button12.FlatAppearance.BorderSize = 0;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
-            this.button12.Location = new System.Drawing.Point(243, 84);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(123, 70);
-            this.button12.TabIndex = 13;
-            this.button12.UseVisualStyleBackColor = false;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
-            // 
             // Payment
             // 
             this.Payment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.Payment.Controls.Add(this.pictureBox9);
             this.Payment.Controls.Add(this.button11);
             this.Payment.ForeColor = System.Drawing.Color.White;
             this.Payment.Location = new System.Drawing.Point(4, 22);
             this.Payment.Name = "Payment";
             this.Payment.Padding = new System.Windows.Forms.Padding(3);
-            this.Payment.Size = new System.Drawing.Size(779, 432);
+            this.Payment.Size = new System.Drawing.Size(1686, 432);
             this.Payment.TabIndex = 8;
             this.Payment.Text = "Payment";
             // 
@@ -898,32 +1022,165 @@
             this.button11.FlatAppearance.BorderSize = 0;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
-            this.button11.Location = new System.Drawing.Point(315, 287);
+            this.button11.Location = new System.Drawing.Point(309, 304);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(123, 70);
             this.button11.TabIndex = 14;
             this.button11.UseVisualStyleBackColor = false;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
-            // label22
+            // pictureBox2
             // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Harlow Solid Italic", 20F, System.Drawing.FontStyle.Italic);
-            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
-            this.label22.Location = new System.Drawing.Point(114, 181);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(80, 34);
-            this.label22.TabIndex = 34;
-            this.label22.Text = "email:";
-            this.label22.Visible = false;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(280, 25);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(158, 138);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
             // 
-            // txtemail
+            // pictureBox3
             // 
-            this.txtemail.Location = new System.Drawing.Point(243, 191);
-            this.txtemail.Name = "txtemail";
-            this.txtemail.Size = new System.Drawing.Size(177, 20);
-            this.txtemail.TabIndex = 35;
-            this.txtemail.Visible = false;
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(6, 344);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(93, 82);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 11;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(6, 344);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(95, 82);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 21;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Location = new System.Drawing.Point(3, 347);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(94, 82);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 22;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(3, 349);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(91, 80);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 23;
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.Location = new System.Drawing.Point(6, 344);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(91, 82);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox7.TabIndex = 41;
+            this.pictureBox7.TabStop = false;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
+            this.pictureBox8.Location = new System.Drawing.Point(6, 344);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(97, 82);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 39;
+            this.pictureBox8.TabStop = false;
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
+            this.pictureBox9.Location = new System.Drawing.Point(3, 347);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(95, 82);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox9.TabIndex = 23;
+            this.pictureBox9.TabStop = false;
+            // 
+            // lblFout
+            // 
+            this.lblFout.AutoSize = true;
+            this.lblFout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(153)))), ((int)(((byte)(160)))));
+            this.lblFout.Location = new System.Drawing.Point(326, 408);
+            this.lblFout.Name = "lblFout";
+            this.lblFout.Size = new System.Drawing.Size(143, 13);
+            this.lblFout.TabIndex = 42;
+            this.lblFout.Text = "Deze zetel is al gereserveerd";
+            this.lblFout.Visible = false;
+            // 
+            // End
+            // 
+            this.End.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.End.Controls.Add(this.pictureBox10);
+            this.End.Controls.Add(this.button13);
+            this.End.Controls.Add(this.label24);
+            this.End.Controls.Add(this.label25);
+            this.End.Location = new System.Drawing.Point(4, 22);
+            this.End.Name = "End";
+            this.End.Padding = new System.Windows.Forms.Padding(3);
+            this.End.Size = new System.Drawing.Size(1686, 432);
+            this.End.TabIndex = 9;
+            this.End.Text = "End";
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
+            this.pictureBox10.Location = new System.Drawing.Point(288, 23);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(158, 138);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox10.TabIndex = 9;
+            this.pictureBox10.TabStop = false;
+            // 
+            // button13
+            // 
+            this.button13.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button13.BackgroundImage")));
+            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button13.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.button13.FlatAppearance.BorderSize = 0;
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.button13.Location = new System.Drawing.Point(302, 332);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(131, 64);
+            this.button13.TabIndex = 8;
+            this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Harlow Solid Italic", 20F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.label24.Location = new System.Drawing.Point(146, 254);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(460, 34);
+            this.label24.TabIndex = 7;
+            this.label24.Text = "Bedankt om Sparky Tickets te gebruiken!";
+            this.label24.Click += new System.EventHandler(this.label24_Click);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Harlow Solid Italic", 30F, System.Drawing.FontStyle.Italic);
+            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.label25.Location = new System.Drawing.Point(231, 164);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(260, 51);
+            this.label25.TabIndex = 6;
+            this.label25.Text = "Sparky Tickets";
             // 
             // Form1
             // 
@@ -956,6 +1213,17 @@
             this.Email.ResumeLayout(false);
             this.Email.PerformLayout();
             this.Payment.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            this.End.ResumeLayout(false);
+            this.End.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1027,6 +1295,26 @@
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.TextBox txtemail;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label lblResultEmail;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.Label lblFout;
+        private System.Windows.Forms.TabPage End;
+        private System.Windows.Forms.PictureBox pictureBox10;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
     }
 }
 

@@ -81,8 +81,8 @@ INSERT INTO tblOuders(kindid, ouderid) VALUES (86734,14);
 
 DROP TABLE IF EXISTS `tblTickets`;
 CREATE TABLE tblTickets(
-zetelid    			VARCHAR(6)  NOT NULL PRIMARY KEY
-,ticketid    		INTEGER(6)	AUTO_INCREMENT
+ticketid    		INTEGER(6)	AUTO_INCREMENT PRIMARY KEY
+,zetelid    			VARCHAR(6)  NOT NULL 
 ,ouderid    		INTEGER(6)	DEFAULT NULL
 );
 INSERT INTO tblTickets(zetelid) VALUES (1.1);
