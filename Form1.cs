@@ -26,7 +26,7 @@ namespace tempo
     { 
         public static string connectionString = $"server=127.0.0.1;userid=root;password=kolva;database=db_leerlingen";
         MySqlConnection connection = new MySqlConnection(connectionString);
-        string ouderid = "1";
+        string ouderid = "";
         public Form1()
         {
             InitializeComponent();
@@ -103,12 +103,10 @@ namespace tempo
             lblOuderid.Text = "Ouderid: " + ouderid;
         }
         #endregion
-        /*ZETEL WERKT NOG NIET, SKIP*/
-        #region Zetel
+        #region Ticket2
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedValue = comboBox2.SelectedItem.ToString();
-            comboBox3.Items.Clear();
             switch (selectedValue)              //Alle mogelijke opties voor stoelen T-T
             {
                 case "1":
@@ -229,6 +227,143 @@ namespace tempo
                     comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "20" });
                     break;
             }
+            MySqlCommand sqlCommand = new MySqlCommand("SELECT zetelid, ouderid FROM tbltickets", connection);
+            connection.Open();
+            DataSet DS = new DataSet();
+            MySqlDataAdapter adapter = new MySqlDataAdapter(sqlCommand);
+            adapter.Fill(DS, "tbltickets");
+            DataTable newTable = DS.Tables["tbltickets"];
+            connection.Close();
+            foreach (DataRow dr in newTable.Rows)
+            {
+                if (dr["ouderid"].ToString() != null)
+                {
+                    string id = dr["zetelid"].ToString().Substring(0,dr["zetelid"].ToString().IndexOf('.')-1) + dr["zetelid"].ToString().Substring(dr["zetelid"].ToString().IndexOf('.') + 1, dr["zetelid"].ToString().Length - 1 - dr["zetelid"].ToString().IndexOf('.'));
+                    switch (id)
+                    {
+                        case "1":
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            break;
+                        case "2":
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            break;
+                        case "3":
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            break;
+                        case "4":
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            break;
+                        case "5":
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            break;
+                        case "6":
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            break;
+                        case "7":
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            break;
+                        case "8":
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            break;
+                        case "9":
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            break;
+                        case "10":
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            break;
+                        case "11":
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            break;
+                        case "12":
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            break;
+                        case "13":
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            break;
+                        case "14":
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            break;
+                        case "15":
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            break;
+                        case "16":
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            break;
+                        case "17":
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            break;
+                        case "18":
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            break;
+                        case "19":
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            break;
+                        case "20":
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            comboBox2.Items.Remove(id);
+                            break;
+                    }
+                }
+            }
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -261,118 +396,68 @@ namespace tempo
                 comboBox6.Visible = true;
             }
         }
-
+        public string zetelid = "";
+        public string zetelid1 = "";
+        public string zetelid2 = "";
+        public string zetelid3 = "";
+        public string zetelid4 = "";
+        
         private void button7_Click(object sender, EventArgs e)
         {
-
-            string zetelid = comboBox2.Text + "." + comboBox3.Text;
+            if (comboBox2.Text == "1")
+            {
+                zetelid = comboBox2.Text + "." + comboBox3.Text;
+                connection.Open();
+                MySqlCommand sqlCommand = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid + "'", connection);
+                sqlCommand.ExecuteNonQuery();
+                connection.Close();
+                TabControl1.SelectedTab = Payment;
+            }
             if (comboBox2.Text == "2")
             {
-                string zetelid2 = comboBox2.Text + "." + comboBox4.Text;
+                zetelid1 = comboBox2.Text + "." + comboBox3.Text; 
+                zetelid2 = comboBox2.Text + "." + comboBox4.Text;
                 connection.Open();
-                MySqlCommand info = new MySqlCommand("SELECT ouderid FROM tbltickets WHERE zetelid='"+zetelid + "'", connection);
-                DataSet DS = new DataSet();
-                MySqlDataAdapter adapter = new MySqlDataAdapter(info);
-                adapter.Fill(DS, "tbltickets");
-                DataTable newTable = DS.Tables["tbltickets"];
-                foreach (DataRow dr in newTable.Rows)
-                {
-                    if (dr["ouderid"].ToString() == null)
-                    {
-                        MySqlCommand sqlCommand = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid + "'", connection);
-                        sqlCommand.ExecuteNonQuery();
-                        MySqlCommand sqlCommand2 = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid2 + "'", connection);
-                        sqlCommand2.ExecuteNonQuery();
-                        connection.Close();
-                        TabControl1.SelectedTab = Payment;
-                    }
-                    else
-                    {
-                        lblFout.Visible = true;
-                        connection.Close();
-                        comboBox1.Text = string.Empty;
-                        comboBox2.Text = string.Empty;
-                        comboBox3.Text = string.Empty;
-                        comboBox4.Text = string.Empty;
-                        TabControl1.SelectedTab = Ticket2;
-                    }
-                }
+                MySqlCommand sqlCommand = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid1 + "'", connection);
+                sqlCommand.ExecuteNonQuery();
+                MySqlCommand sqlCommand2 = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid2 + "'", connection);
+                sqlCommand2.ExecuteNonQuery();
+                connection.Close();
+                TabControl1.SelectedTab = Payment;
             }
             if (comboBox2.Text == "3")
             {
-                string zetelid2 = comboBox2.Text + "." + comboBox4.Text;
-                string zetelid3 = comboBox2.Text + "." + comboBox5.Text;
+                zetelid1 = comboBox2.Text + "." + comboBox3.Text;
+                zetelid2 = comboBox2.Text + "." + comboBox4.Text;
+                zetelid3 = comboBox2.Text + "." + comboBox5.Text;
                 connection.Open();
-                MySqlCommand info = new MySqlCommand("SELECT ouderid FROM tbltickets WHERE zetelid='" + zetelid + "'", connection);
-                DataSet DS = new DataSet();
-                MySqlDataAdapter adapter = new MySqlDataAdapter(info);
-                adapter.Fill(DS, "tbltickets");
-                DataTable newTable = DS.Tables["tbltickets"];
-                foreach (DataRow dr in newTable.Rows)
-                {
-                    if (dr["ouderid"].ToString() == null)
-                    {
-                        MySqlCommand sqlCommand = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid + "'", connection);
-                        sqlCommand.ExecuteNonQuery();
-                        MySqlCommand sqlCommand2 = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid2 + "'", connection);
-                        sqlCommand2.ExecuteNonQuery();
-                        MySqlCommand sqlCommand3 = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid3 + "'", connection);
-                        sqlCommand3.ExecuteNonQuery();
-                        connection.Close();
-                        TabControl1.SelectedTab = Payment;
-                    }
-                    else
-                    {
-                        lblFout.Visible = true;
-                        connection.Close();
-                        comboBox1.Text = string.Empty;
-                        comboBox2.Text = string.Empty;
-                        comboBox3.Text = string.Empty;
-                        comboBox4.Text = string.Empty;
-                        comboBox5.Text = string.Empty;
-                        TabControl1.SelectedTab = Ticket2;
-                    }
-                }
+                MySqlCommand sqlCommand = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid1 + "'", connection);
+                sqlCommand.ExecuteNonQuery();
+                MySqlCommand sqlCommand2 = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid2 + "'", connection);
+                sqlCommand2.ExecuteNonQuery();
+                MySqlCommand sqlCommand3 = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid3 + "'", connection);
+                sqlCommand3.ExecuteNonQuery();
+                connection.Close();
+                TabControl1.SelectedTab = Payment;
             }
             if (comboBox2.Text == "4")
             {
-                string zetelid2 = comboBox2.Text + "." + comboBox4.Text;
-                string zetelid3 = comboBox2.Text + "." + comboBox5.Text;
-                string zetelid4 = comboBox2.Text + "." + comboBox6.Text;
+                zetelid1 = comboBox2.Text + "." + comboBox3.Text;
+                zetelid2 = comboBox2.Text + "." + comboBox4.Text;
+                zetelid3 = comboBox2.Text + "." + comboBox5.Text;
+                zetelid4 = comboBox2.Text + "." + comboBox6.Text;
                 connection.Open();
-                MySqlCommand info = new MySqlCommand("SELECT ouderid FROM tbltickets WHERE zetelid='" + zetelid +"'", connection);
-                DataSet DS = new DataSet();
-                MySqlDataAdapter adapter = new MySqlDataAdapter(info);
-                adapter.Fill(DS, "tbltickets");
-                DataTable newTable = DS.Tables["tbltickets"];
-                foreach (DataRow dr in newTable.Rows)
-                {
-                    if (dr["ouderid"].ToString() == null)
-                    {
-                        MySqlCommand sqlCommand = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid + "'", connection);
-                        sqlCommand.ExecuteNonQuery();
-                        MySqlCommand sqlCommand2 = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid2 + "'", connection);
-                        sqlCommand2.ExecuteNonQuery();
-                        MySqlCommand sqlCommand3 = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid3 + "'", connection);
-                        sqlCommand3.ExecuteNonQuery();
-                        MySqlCommand sqlCommand4 = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid4 + "'", connection);
-                        sqlCommand4.ExecuteNonQuery();
-                        connection.Close();
-                        TabControl1.SelectedTab = Payment;
-                    }
-                    else
-                    {
-                        lblFout.Visible = true;
-                        connection.Close();
-                        comboBox1.Text = string.Empty;
-                        comboBox2.Text = string.Empty;
-                        comboBox3.Text = string.Empty;
-                        comboBox4.Text = string.Empty;
-                        comboBox5.Text = string.Empty;
-                        comboBox6.Text = string.Empty;
-                        TabControl1.SelectedTab = Ticket2;
-                    }
-                }
+                
+                MySqlCommand sqlCommand = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid1 + "'", connection);
+                sqlCommand.ExecuteNonQuery();
+                MySqlCommand sqlCommand2 = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid2 + "'", connection);
+                sqlCommand2.ExecuteNonQuery();
+                MySqlCommand sqlCommand3 = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid3 + "'", connection);
+                sqlCommand3.ExecuteNonQuery();
+                MySqlCommand sqlCommand4 = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid4 + "'", connection);
+                sqlCommand4.ExecuteNonQuery();
+                connection.Close();
+                TabControl1.SelectedTab = Payment;
             }
         }
         #endregion
@@ -505,6 +590,7 @@ namespace tempo
         #region Payment
         private void button11_Click(object sender, EventArgs e)
         {
+
             TabControl1.SelectedTab = Email;
         }
         #endregion
@@ -523,18 +609,16 @@ namespace tempo
         private void email()
         {
             connection.Open();
-            MySqlCommand cmd = new MySqlCommand("SELECT zetelid, ticketid FROM tbltickets WHERE ouderid=" + ouderid, connection);
+            MySqlCommand cmd = new MySqlCommand("SELECT ticketid FROM tbltickets WHERE ouderid=" + ouderid, connection);
             DataSet DS = new DataSet();
             MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
             adapter.Fill(DS, "tbltickets");
             DataTable newTable = DS.Tables["tbltickets"];
             connection.Close();
             string ticketid = "";
-            string zetelid = "";
             foreach (DataRow dr in newTable.Rows)
             {
                 ticketid = dr["ticketid"].ToString();
-                zetelid = dr["zetelid"].ToString();
             }
             connection.Close();
 
@@ -553,7 +637,7 @@ namespace tempo
                 From = new MailAddress("sparkytickets@outlook.com", "Sparky Tickets"),
                 Subject = "Bestelling nr. " + ticketid,
                 IsBodyHtml = true,
-                Body = "Bedankt " + textBox1.Text + " voor Sparky Tickets te gebruiken, Jouw ticket is besteld! Je hebt de volgende zetels gereserveerd:" + zetelid,
+                Body = "Bedankt " + textBox1.Text + " voor Sparky Tickets te gebruiken, Jouw ticket " + ticketid +" is besteld! Je hebt de volgende zetels gereserveerd:" + zetelid + zetelid1 + zetelid2 + zetelid3 + zetelid4,
                 BodyEncoding = System.Text.Encoding.UTF8,
                 SubjectEncoding = System.Text.Encoding.UTF8
             };
@@ -561,13 +645,13 @@ namespace tempo
             try
             {
                 smtp.Send(mail);
+                TabControl1.SelectedTab = End;
             }
             catch (Exception ex)
             {
                 lblResultEmail.Text = ex.ToString();
                 lblResultEmail.ForeColor = System.Drawing.Color.Red;
             }
-            TabControl1.SelectedTab = End;
         }
         #endregion
         #region End
