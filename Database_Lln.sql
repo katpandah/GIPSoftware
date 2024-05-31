@@ -84,6 +84,7 @@ CREATE TABLE tblTickets(
 ticketid    		INTEGER(6)	AUTO_INCREMENT PRIMARY KEY
 ,zetelid    			VARCHAR(6)  NOT NULL 
 ,ouderid    		INTEGER(6)	DEFAULT NULL
+,bezet 				CHAR(1) DEFAULT NULL
 );
 INSERT INTO tblTickets(zetelid) VALUES (1.1);
 INSERT INTO tblTickets(zetelid) VALUES (1.2);

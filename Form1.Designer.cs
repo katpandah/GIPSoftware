@@ -107,6 +107,9 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
             this.Payment = new System.Windows.Forms.TabPage();
+            this.txtPaymentReference = new System.Windows.Forms.TextBox();
+            this.txtAmount = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.button11 = new System.Windows.Forms.Button();
             this.End = new System.Windows.Forms.TabPage();
@@ -114,7 +117,6 @@
             this.button13 = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
             this.TabControl1.SuspendLayout();
             this.Main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -156,6 +158,7 @@
             this.TabControl1.SelectedIndex = 0;
             this.TabControl1.Size = new System.Drawing.Size(1694, 458);
             this.TabControl1.TabIndex = 4;
+            this.TabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.TabControl1_Selected);
             // 
             // Main
             // 
@@ -1087,6 +1090,8 @@
             // Payment
             // 
             this.Payment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.Payment.Controls.Add(this.txtPaymentReference);
+            this.Payment.Controls.Add(this.txtAmount);
             this.Payment.Controls.Add(this.label26);
             this.Payment.Controls.Add(this.pictureBox9);
             this.Payment.Controls.Add(this.button11);
@@ -1097,6 +1102,32 @@
             this.Payment.Size = new System.Drawing.Size(1686, 432);
             this.Payment.TabIndex = 8;
             this.Payment.Text = "Payment";
+            this.Payment.Click += new System.EventHandler(this.Payment_Click);
+            // 
+            // txtPaymentReference
+            // 
+            this.txtPaymentReference.Location = new System.Drawing.Point(93, 93);
+            this.txtPaymentReference.Name = "txtPaymentReference";
+            this.txtPaymentReference.Size = new System.Drawing.Size(189, 20);
+            this.txtPaymentReference.TabIndex = 32;
+            // 
+            // txtAmount
+            // 
+            this.txtAmount.Location = new System.Drawing.Point(93, 67);
+            this.txtAmount.Name = "txtAmount";
+            this.txtAmount.Size = new System.Drawing.Size(100, 20);
+            this.txtAmount.TabIndex = 31;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Harlow Solid Italic", 20F, System.Drawing.FontStyle.Italic);
+            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.label26.Location = new System.Drawing.Point(143, 162);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(471, 34);
+            this.label26.TabIndex = 30;
+            this.label26.Text = "Je kan betalen op het event aan de balie! ;)";
             // 
             // pictureBox9
             // 
@@ -1183,17 +1214,6 @@
             this.label25.Size = new System.Drawing.Size(260, 51);
             this.label25.TabIndex = 6;
             this.label25.Text = "Sparky Tickets";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Harlow Solid Italic", 20F, System.Drawing.FontStyle.Italic);
-            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
-            this.label26.Location = new System.Drawing.Point(143, 162);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(471, 34);
-            this.label26.TabIndex = 30;
-            this.label26.Text = "Je kan betalen op het event aan de balie! ;)";
             // 
             // Form1
             // 
@@ -1330,6 +1350,8 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox txtAmount;
+        private System.Windows.Forms.TextBox txtPaymentReference;
     }
 }
 

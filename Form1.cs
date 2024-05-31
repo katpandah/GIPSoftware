@@ -18,12 +18,15 @@ using System.Net;
 using MySqlX.XDevAPI;
 using MailKit.Security;
 using Org.BouncyCastle.Crypto.Macs;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace tempo
 {
 
     public partial class Form1 : Form
-    { 
+    {
         public static string connectionString = $"server=127.0.0.1;userid=root;password=kolva;database=db_leerlingen";
         MySqlConnection connection = new MySqlConnection(connectionString);
         string ouderid = "";
@@ -71,7 +74,7 @@ namespace tempo
             bool correct = false;
             foreach (DataRow dr in newTable.Rows)
             {
-                if (dr["kindnaam"].ToString() == txtNaam.Text && dr["kindvoornaam"].ToString() == txtVoornaam.Text && dr["kindid"].ToString() == txtKindid.Text) 
+                if (dr["kindnaam"].ToString() == txtNaam.Text && dr["kindvoornaam"].ToString() == txtVoornaam.Text && dr["kindid"].ToString() == txtKindid.Text)
                 {
                     correct = true;
                 }
@@ -104,264 +107,34 @@ namespace tempo
         }
         #endregion
         #region Ticket2
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+
+        public void UpdateComboBox()
         {
-            string selectedValue = comboBox2.SelectedItem.ToString();
-            switch (selectedValue)              //Alle mogelijke opties voor stoelen T-T
+            List<string> bezetteZetels = new List<string>();
+
+            // SQL query voor bezette stoelen
+            string query = "SELECT zetelid FROM SeatsTable WHERE bezet = 1;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                case "1":
-                    comboBox3.Items.AddRange(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "17", "19", "21", "23", "25" });
-                    comboBox4.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "17", "19", "21", "23", "25" });
-                    comboBox5.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "17", "19", "21", "23", "25" });
-                    comboBox6.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "17", "19", "21", "23", "25" });
-                    break;
-                case "2":
-                    comboBox3.Items.AddRange(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "19", "21", "23", "25", "27", "29" });
-                    comboBox4.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "19", "21", "23", "25", "27", "29" });
-                    comboBox5.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "19", "21", "23", "25", "27", "29" });
-                    comboBox6.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "19", "21", "23", "25", "27", "29" });
-                    break;
-                case "3":
-                    comboBox3.Items.AddRange(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18","19", "21", "23", "25", "27", "29","31","33" });
-                    comboBox4.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "21", "23", "25", "27", "29", "31", "33" });
-                    comboBox5.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "21", "23", "25", "27", "29", "31", "33" });
-                    comboBox6.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "21", "23", "25", "27", "29", "31", "33" });
-                    break;
-                case "4":
-                    comboBox3.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19","20", "21", "23", "25", "27", "29", "31", "33","35","37" });
-                    comboBox4.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "23", "25", "27", "29", "31", "33", "35", "37" });
-                    comboBox5.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "23", "25", "27", "29", "31", "33", "35", "37" });
-                    comboBox6.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "23", "25", "27", "29", "31", "33", "35", "37" });
-                    break;
-                case "5":
-                    comboBox3.Items.AddRange(new String[] { "1", "3", "5", "7", "9", "11", "13", "15", "17", "19", "21", "23", "25", "27", "29", "31", "33", "35", "37", "39" });
-                    comboBox4.Items.AddRange(new String[] { "1", "3", "5", "7", "9", "11", "13", "15", "17", "19", "21", "23", "25", "27", "29", "31", "33", "35", "37", "39" });
-                    comboBox5.Items.AddRange(new String[] { "1", "3", "5", "7", "9", "11", "13", "15", "17", "19", "21", "23", "25", "27", "29", "31", "33", "35", "37", "39" });
-                    comboBox6.Items.AddRange(new String[] { "1", "3", "5", "7", "9", "11", "13", "15", "17", "19", "21", "23", "25", "27", "29", "31", "33", "35", "37", "39" });
-                    break;
-                case "6":
-                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34" });
-                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34" });
-                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34" });
-                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34" });
-                    break;
-                case "7":
-                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36" });
-                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36" });
-                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36" });
-                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36" });
-                    break;
-                case "8":
-                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38" });
-                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38" });
-                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38" });
-                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38" });
-                    break;
-                case "9":
-                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36" });
-                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36" });
-                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36" });
-                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36" });
-                    break;;
-                case "10":
-                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32"});
-                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32" });
-                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32" });
-                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32" });
-                    break;
-                case "11":
-                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "20", "41", "43", "45", "47"});
-                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "20", "41", "43", "45", "47" });
-                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "20", "41", "43", "45", "47" });
-                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "20", "41", "43", "45", "47" });
-                    break;
-                case "12":
-                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19","20" });
-                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" });
-                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" });
-                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" });
-                    break;
-                case "13":
-                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "40", "42", "44", "46" });
-                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "40", "42", "44", "46" });
-                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "40", "42", "44", "46" });
-                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "40", "42", "44", "46" });
-                    break;
-                case "14":
-                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20","21", "22", "40", "42", "44", "46" });
-                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "40", "42", "44", "46" });
-                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "40", "42", "44", "46" });
-                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "40", "42", "44", "46" });
-                    break;
-                case "15":
-                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "40", "42", "44", "46" });
-                    break;
-                case "16":
-                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38" });
-                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38" });
-                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38" });
-                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38" });
-                    break;
-                case "17":
-                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "39" });
-                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "39" });
-                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "39" });
-                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "39" });
-                    break;
-                case "18":
-                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60" });
-                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60" });
-                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60" });
-                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60" });
-                    break;
-                case "19":
-                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"});
-                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" });
-                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" });
-                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" });
-                    break;
-                case "20":
-                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18","20" });
-                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "20" });
-                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "20" });
-                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "20" });
-                    break;
-            }
-            MySqlCommand sqlCommand = new MySqlCommand("SELECT zetelid, ouderid FROM tbltickets", connection);
-            connection.Open();
-            DataSet DS = new DataSet();
-            MySqlDataAdapter adapter = new MySqlDataAdapter(sqlCommand);
-            adapter.Fill(DS, "tbltickets");
-            DataTable newTable = DS.Tables["tbltickets"];
-            connection.Close();
-            foreach (DataRow dr in newTable.Rows)
-            {
-                if (dr["ouderid"].ToString() != null)
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    string id = dr["zetelid"].ToString().Substring(0,dr["zetelid"].ToString().IndexOf('.')-1) + dr["zetelid"].ToString().Substring(dr["zetelid"].ToString().IndexOf('.') + 1, dr["zetelid"].ToString().Length - 1 - dr["zetelid"].ToString().IndexOf('.'));
-                    switch (id)
-                    {
-                        case "1":
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            break;
-                        case "2":
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            break;
-                        case "3":
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            break;
-                        case "4":
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            break;
-                        case "5":
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            break;
-                        case "6":
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            break;
-                        case "7":
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            break;
-                        case "8":
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            break;
-                        case "9":
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            break;
-                        case "10":
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            break;
-                        case "11":
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            break;
-                        case "12":
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            break;
-                        case "13":
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            break;
-                        case "14":
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            break;
-                        case "15":
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            break;
-                        case "16":
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            break;
-                        case "17":
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            break;
-                        case "18":
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            break;
-                        case "19":
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            break;
-                        case "20":
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            comboBox2.Items.Remove(id);
-                            break;
-                    }
+                    bezetteZetels.Add(reader.GetString(0));
+                }
+
+                reader.Close();
+            }
+
+            // Update de combobox
+            for (int i = comboBox2.Items.Count - 1; i >= 0; i--)
+            {
+                if (bezetteZetels.Contains(comboBox2.Items[i].ToString()))
+                {
+                    comboBox2.Items.RemoveAt(i);
                 }
             }
         }
@@ -401,26 +174,26 @@ namespace tempo
         public string zetelid2 = "";
         public string zetelid3 = "";
         public string zetelid4 = "";
-        
+
         private void button7_Click(object sender, EventArgs e)
         {
             if (comboBox2.Text == "1")
             {
                 zetelid = comboBox2.Text + "." + comboBox3.Text;
                 connection.Open();
-                MySqlCommand sqlCommand = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid + "'", connection);
+                MySqlCommand sqlCommand = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + ", bezet='1' WHERE zetelid='" + zetelid + "'", connection);
                 sqlCommand.ExecuteNonQuery();
                 connection.Close();
                 TabControl1.SelectedTab = Payment;
             }
             if (comboBox2.Text == "2")
             {
-                zetelid1 = comboBox2.Text + "." + comboBox3.Text; 
+                zetelid1 = comboBox2.Text + "." + comboBox3.Text;
                 zetelid2 = comboBox2.Text + "." + comboBox4.Text;
                 connection.Open();
-                MySqlCommand sqlCommand = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid1 + "'", connection);
+                MySqlCommand sqlCommand = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + ", bezet='1' WHERE zetelid='" + zetelid1 + "'", connection);
                 sqlCommand.ExecuteNonQuery();
-                MySqlCommand sqlCommand2 = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid2 + "'", connection);
+                MySqlCommand sqlCommand2 = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + ", bezet='1' WHERE zetelid='" + zetelid2 + "'", connection);
                 sqlCommand2.ExecuteNonQuery();
                 connection.Close();
                 TabControl1.SelectedTab = Payment;
@@ -431,11 +204,11 @@ namespace tempo
                 zetelid2 = comboBox2.Text + "." + comboBox4.Text;
                 zetelid3 = comboBox2.Text + "." + comboBox5.Text;
                 connection.Open();
-                MySqlCommand sqlCommand = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid1 + "'", connection);
+                MySqlCommand sqlCommand = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + ", bezet='1' WHERE zetelid='" + zetelid1 + "'", connection);
                 sqlCommand.ExecuteNonQuery();
-                MySqlCommand sqlCommand2 = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid2 + "'", connection);
+                MySqlCommand sqlCommand2 = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + ", bezet='1' WHERE zetelid='" + zetelid2 + "'", connection);
                 sqlCommand2.ExecuteNonQuery();
-                MySqlCommand sqlCommand3 = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid3 + "'", connection);
+                MySqlCommand sqlCommand3 = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + ", bezet='1' WHERE zetelid='" + zetelid3 + "'", connection);
                 sqlCommand3.ExecuteNonQuery();
                 connection.Close();
                 TabControl1.SelectedTab = Payment;
@@ -447,14 +220,14 @@ namespace tempo
                 zetelid3 = comboBox2.Text + "." + comboBox5.Text;
                 zetelid4 = comboBox2.Text + "." + comboBox6.Text;
                 connection.Open();
-                
-                MySqlCommand sqlCommand = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid1 + "'", connection);
+
+                MySqlCommand sqlCommand = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + ", bezet='1' WHERE zetelid='" + zetelid1 + "'", connection);
                 sqlCommand.ExecuteNonQuery();
-                MySqlCommand sqlCommand2 = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid2 + "'", connection);
+                MySqlCommand sqlCommand2 = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + ", bezet='1' WHERE zetelid='" + zetelid2 + "'", connection);
                 sqlCommand2.ExecuteNonQuery();
-                MySqlCommand sqlCommand3 = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid3 + "'", connection);
+                MySqlCommand sqlCommand3 = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + ", bezet='1' WHERE zetelid='" + zetelid3 + "'", connection);
                 sqlCommand3.ExecuteNonQuery();
-                MySqlCommand sqlCommand4 = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + " WHERE zetelid='" + zetelid4 + "'", connection);
+                MySqlCommand sqlCommand4 = new MySqlCommand("UPDATE tbltickets SET ouderid = " + ouderid + ", bezet='1' WHERE zetelid='" + zetelid4 + "'", connection);
                 sqlCommand4.ExecuteNonQuery();
                 connection.Close();
                 TabControl1.SelectedTab = Payment;
@@ -498,7 +271,7 @@ namespace tempo
                         string where = txtWaarden.Text.Substring(0, txtWaarden.Text.IndexOf('='));                                                                  //Kolomnaam
                         string whereat = txtWaarden.Text.Substring(txtWaarden.Text.IndexOf('=') + 1, txtWaarden.Text.Length - 1 - txtWaarden.Text.IndexOf('='));    //Kolom parameter
                         string select1 = "SELECT * FROM " + txtTabel.Text;
-                        MySqlCommand whereSelect = new MySqlCommand(select1 + " WHERE " + where + "=" +whereat, connection);
+                        MySqlCommand whereSelect = new MySqlCommand(select1 + " WHERE " + where + "=" + whereat, connection);
                         connection.Open();
                         MySqlDataAdapter adapter0 = new MySqlDataAdapter(whereSelect);
                         adapter0.SelectCommand.Parameters.AddWithValue(where, whereat);
@@ -588,9 +361,73 @@ namespace tempo
         }
         #endregion
         #region Payment
+        private static readonly HttpClient client = new HttpClient();
+        private const string payconiqApiUrl = "https://api.payconiq.com/v3/transactions";
+        private const string apiKey = "your_payconiq_api_key"; // Herplaats met Payconiq API 
+
+        private void TabControl1_Selected(object sender, TabControlEventArgs e)
+        {
+            UpdateComboBox();
+            txtAmount.Visible = false;
+            txtPaymentReference.Visible = false;
+        }
+
         private void button11_Click(object sender, EventArgs e)
         {
+            /*
+            // Retrieve user input
+            string amount = txtAmount.Text;
+            string paymentReference = txtPaymentReference.Text;
 
+            // Validate input
+            if (string.IsNullOrEmpty(amount) || string.IsNullOrEmpty(paymentReference))
+            {
+                MessageBox.Show("Please fill in all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                // Create the payment request payload
+                var paymentRequest = new
+                {
+                    amount = (int)(decimal.Parse(amount) * 100), // Payconiq uses cents
+                    currency = "EUR",
+                    callbackUrl = "https://your.callback.url", // Replace with your actual callback URL
+                    reference = paymentReference,
+                };
+
+                // Serialize the payment request to JSON
+                var json = JsonConvert.SerializeObject(paymentRequest);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                // Set the API key in the request header
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
+
+                // Make the API request
+                var response = await client.PostAsync(payconiqApiUrl, content);
+                response.EnsureSuccessStatusCode();
+
+                // Deserialize the response
+                var responseString = await response.Content.ReadAsStringAsync();
+                var paymentResponse = JsonConvert.DeserializeObject<dynamic>(responseString);
+
+                // Display the payment QR code or payment URL
+                var paymentUrl = (string)paymentResponse.paymentUrl;
+                MessageBox.Show($"Payment initiated. Please complete the payment using this URL: {paymentUrl}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Optionally, open the payment URL in the default browser
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = paymentUrl,
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Payment Failed: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            */
             TabControl1.SelectedTab = Email;
         }
         #endregion
@@ -669,6 +506,9 @@ namespace tempo
         private void Ticket2_Click(object sender, EventArgs e) { }
         private void AdminPanel_Click(object sender, EventArgs e) { }
         private void label24_Click(object sender, EventArgs e) { }
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e){}
+        private void Payment_Click(object sender, EventArgs e){}
+
         #endregion
 
     }

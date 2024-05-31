@@ -104,3 +104,15 @@ C:\Users\Kat\GIPSoftware\bin\Debug\MimeKit.xml
 C:\Users\Kat\GIPSoftware\bin\Debug\MimeKit.dll.config
 C:\Users\Kat\GIPSoftware\bin\Debug\System.Formats.Asn1.xml
 C:\Users\Kat\GIPSoftware\bin\Debug\System.ValueTuple.xml
+C:\Users\vanaelbrouck_bo\GIPSoftware\bin\Debug\MailKit.dll
+C:\Users\vanaelbrouck_bo\GIPSoftware\bin\Debug\MimeKit.dll
+C:\Users\vanaelbrouck_bo\GIPSoftware\bin\Debug\System.Formats.Asn1.dll
+C:\Users\vanaelbrouck_bo\GIPSoftware\bin\Debug\System.ValueTuple.dll
+C:\Users\vanaelbrouck_bo\GIPSoftware\bin\Debug\MailKit.pdb
+C:\Users\vanaelbrouck_bo\GIPSoftware\bin\Debug\MailKit.xml
+C:\Users\vanaelbrouck_bo\GIPSoftware\bin\Debug\MailKit.dll.config
+C:\Users\vanaelbrouck_bo\GIPSoftware\bin\Debug\MimeKit.pdb
+C:\Users\vanaelbrouck_bo\GIPSoftware\bin\Debug\MimeKit.xml
+C:\Users\vanaelbrouck_bo\GIPSoftware\bin\Debug\MimeKit.dll.config
+C:\Users\vanaelbrouck_bo\GIPSoftware\bin\Debug\System.Formats.Asn1.xml
+C:\Users\vanaelbrouck_bo\GIPSoftware\bin\Debug\System.ValueTuple.xml
