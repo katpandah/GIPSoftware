@@ -27,13 +27,17 @@ namespace tempo
 
     public partial class Form1 : Form
     {
-        public static string connectionString = $"server=127.0.0.1;userid=root;password=kolva;database=db_leerlingen";
-        MySqlConnection connection = new MySqlConnection(connectionString);
-        string ouderid = "";
+
+        //Alles over het project en vorige versies kan je vinden op mijn github pagina vinden! https://github.com/katpandah/GIPSoftware
+        public static string connectionString = $"server=127.0.0.1;userid=root;password=kolva;database=db_leerlingen"; //connectionstring
+        MySqlConnection connection = new MySqlConnection(connectionString); //connectionstring in een connection steken
+        string ouderid = ""; // ouderid holder
+
         public Form1()
         {
             InitializeComponent();
         }
+
         #region Main
         private void button1_Click(object sender, EventArgs e)
         {
@@ -48,17 +52,17 @@ namespace tempo
 
         private void button3_Click(object sender, EventArgs e)
         {
-            TabControl1.SelectedTab = Admin;
+            TabControl1.SelectedTab = Admin; //Verandert naar Admin tab
         }
         #endregion
         #region Help pagina
         private void button2_Click(object sender, EventArgs e)
         {
-            TabControl1.SelectedTab = help;
+            TabControl1.SelectedTab = help; //verandert naar help tab
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            TabControl1.SelectedTab = Choose;
+            TabControl1.SelectedTab = Choose; //stuurt u terug naar choose tab
         }
         #endregion
         #region Ticket
@@ -79,7 +83,7 @@ namespace tempo
                     correct = true;
                 }
             }
-            if (!correct)
+            if (!correct)   //als niets juist is dan gaat het programma afsluiten
             {
                 Environment.Exit(0);
             }
@@ -92,7 +96,7 @@ namespace tempo
             adapter.Fill(DS, "tblouders");
             newTable = DS.Tables["tblouders"];
             connection.Close();
-            foreach (DataRow dr in newTable.Rows)
+            foreach (DataRow dr in newTable.Rows)   //voor oudèerid te krijgen
             {
                 if (dr["kindid"].ToString() == kindid)
                 {
@@ -108,25 +112,26 @@ namespace tempo
         #endregion
         #region Ticket2
 
-        public void UpdateComboBox()
+        public void UpdateComboBox() //bezette stoelen eruit halen
         {
             List<string> bezetteZetels = new List<string>();
 
             // SQL query voor bezette stoelen
-            string query = "SELECT zetelid FROM SeatsTable WHERE bezet = 1;";
+            string query = "SELECT zetelid FROM tbltickets WHERE bezet = '1';";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand(query, connection);
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
+                using (connection)
                 {
-                    bezetteZetels.Add(reader.GetString(0));
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    connection.Open();
+                    MySqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        bezetteZetels.Add(reader.GetString(0));
+                    }
+                    reader.Close();
                 }
-
-                reader.Close();
             }
 
             // Update de combobox
@@ -138,7 +143,7 @@ namespace tempo
                 }
             }
         }
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) //bepaalde cmbboxen verstoppen wanneer ze niet nodig zijn
         {
             if (comboBox1.Text == "1")
             {
@@ -174,6 +179,133 @@ namespace tempo
         public string zetelid2 = "";
         public string zetelid3 = "";
         public string zetelid4 = "";
+
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e) 
+        {
+            string selectedValue = comboBox2.SelectedItem.ToString();
+            switch (selectedValue)              //Alle mogelijke opties voor stoelen T-T
+            {
+                case "1":
+                    comboBox3.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "17", "19", "21", "23", "25" });
+                    comboBox4.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "17", "19", "21", "23", "25" });
+                    comboBox5.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "17", "19", "21", "23", "25" });
+                    comboBox6.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "17", "19", "21", "23", "25" });
+                    break;
+                case "2":
+                    comboBox3.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "19", "21", "23", "25", "27", "29" });
+                    comboBox4.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "19", "21", "23", "25", "27", "29" });
+                    comboBox5.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "19", "21", "23", "25", "27", "29" });
+                    comboBox6.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "19", "21", "23", "25", "27", "29" });
+                    break;
+                case "3":
+                    comboBox3.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "21", "23", "25", "27", "29", "31", "33" });
+                    comboBox4.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "21", "23", "25", "27", "29", "31", "33" });
+                    comboBox5.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "21", "23", "25", "27", "29", "31", "33" });
+                    comboBox6.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "21", "23", "25", "27", "29", "31", "33" });
+                    break;
+                case "4":
+                    comboBox3.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "23", "25", "27", "29", "31", "33", "35", "37" });
+                    comboBox4.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "23", "25", "27", "29", "31", "33", "35", "37" });
+                    comboBox5.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "23", "25", "27", "29", "31", "33", "35", "37" });
+                    comboBox6.Items.AddRange(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "23", "25", "27", "29", "31", "33", "35", "37" });
+                    break;
+                case "5":
+                    comboBox3.Items.AddRange(new String[] { "1", "3", "5", "7", "9", "11", "13", "15", "17", "19", "21", "23", "25", "27", "29", "31", "33", "35", "37", "39" });
+                    comboBox4.Items.AddRange(new String[] { "1", "3", "5", "7", "9", "11", "13", "15", "17", "19", "21", "23", "25", "27", "29", "31", "33", "35", "37", "39" });
+                    comboBox5.Items.AddRange(new String[] { "1", "3", "5", "7", "9", "11", "13", "15", "17", "19", "21", "23", "25", "27", "29", "31", "33", "35", "37", "39" });
+                    comboBox6.Items.AddRange(new String[] { "1", "3", "5", "7", "9", "11", "13", "15", "17", "19", "21", "23", "25", "27", "29", "31", "33", "35", "37", "39" });
+                    break;
+                case "6":
+                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34" });
+                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34" });
+                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34" });
+                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34" });
+                    break;
+                case "7":
+                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36" });
+                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36" });
+                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36" });
+                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36" });
+                    break;
+                case "8":
+                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38" });
+                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38" });
+                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38" });
+                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38" });
+                    break;
+                case "9":
+                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36" });
+                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36" });
+                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36" });
+                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36" });
+                    break; ;
+                case "10":
+                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32" });
+                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32" });
+                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32" });
+                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32" });
+                    break;
+                case "11":
+                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "20", "41", "43", "45", "47" });
+                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "20", "41", "43", "45", "47" });
+                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "20", "41", "43", "45", "47" });
+                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "20", "41", "43", "45", "47" });
+                    break;
+                case "12":
+                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" });
+                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" });
+                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" });
+                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" });
+                    break;
+                case "13":
+                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "40", "42", "44", "46" });
+                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "40", "42", "44", "46" });
+                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "40", "42", "44", "46" });
+                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "40", "42", "44", "46" });
+                    break;
+                case "14":
+                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "40", "42", "44", "46" });
+                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "40", "42", "44", "46" });
+                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "40", "42", "44", "46" });
+                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "40", "42", "44", "46" });
+                    break;
+                case "15":
+                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "40", "42", "44", "46" });
+                    break;
+                case "16":
+                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38" });
+                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38" });
+                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38" });
+                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38" });
+                    break;
+                case "17":
+                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "39" });
+                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "39" });
+                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "39" });
+                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "39" });
+                    break;
+                case "18":
+                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60" });
+                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60" });
+                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60" });
+                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60" });
+                    break;
+                case "19":
+                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" });
+                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" });
+                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" });
+                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" });
+                    break;
+                case "20":
+                    comboBox3.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "20" });
+                    comboBox4.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "20" });
+                    comboBox5.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "20" });
+                    comboBox6.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "20" });
+                    break;
+            }
+            UpdateComboBox();
+        }
 
         private void button7_Click(object sender, EventArgs e)
         {
@@ -235,7 +367,7 @@ namespace tempo
         }
         #endregion
         #region AdminLogIn
-        private void button5_Click(object sender, EventArgs e)              //Wanneer login geclickt wordt:
+        private void button5_Click(object sender, EventArgs e)              //Wanneer login geclicked wordt:
         {
             if (txtAdminUser.Text == "User" && txtAdminPassw.Text == "Passw") //Checkt gebruikersnaam en wachtwoord
             {
@@ -255,7 +387,7 @@ namespace tempo
             switch (keuze)
             {
                 case "select":                                              //Wanneer het select is
-                    string select = "SELECT * FROM " + txtTabel.Text;
+                    string select = "SELECT * FROM " + txtTabel.Text.Trim();
                     if (txtWaarden.Text == "") //Zonder where statement
                     {
                         MySqlCommand normalSelect = new MySqlCommand(select, connection);
@@ -367,7 +499,6 @@ namespace tempo
 
         private void TabControl1_Selected(object sender, TabControlEventArgs e)
         {
-            UpdateComboBox();
             txtAmount.Visible = false;
             txtPaymentReference.Visible = false;
         }
@@ -432,7 +563,7 @@ namespace tempo
         }
         #endregion
         #region Email
-        private void button12_Click(object sender, EventArgs e)
+        private void button12_Click(object sender, EventArgs e) //als je email wilt
         {
             txtemail.Visible = true;
             label22.Visible = true;
@@ -457,9 +588,9 @@ namespace tempo
             {
                 ticketid = dr["ticketid"].ToString();
             }
-            connection.Close();
+            connection.Close(); //gaat ticket id ophalen voor in email te steken
 
-            System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient();
+            System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient(); //alle credentials
             smtp.Host = "smtp.office365.com";
             smtp.Port = 587;
             smtp.UseDefaultCredentials = false;
@@ -468,7 +599,7 @@ namespace tempo
             smtp.Credentials = new NetworkCredential { UserName = "sparkytickets@outlook.com", Password = "PasswordForSparky123" };
 
 
-            MailMessage mail = new MailMessage()
+            MailMessage mail = new MailMessage() //mail message content
             {
                 To = { new MailAddress(txtemail.Text) },
                 From = new MailAddress("sparkytickets@outlook.com", "Sparky Tickets"),
@@ -484,7 +615,7 @@ namespace tempo
                 smtp.Send(mail);
                 TabControl1.SelectedTab = End;
             }
-            catch (Exception ex)
+            catch (Exception ex) //als het niet lukt
             {
                 lblResultEmail.Text = ex.ToString();
                 lblResultEmail.ForeColor = System.Drawing.Color.Red;
@@ -494,7 +625,7 @@ namespace tempo
         #region End
         private void button13_Click(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+            Environment.Exit(0); //sluit het programma af
         }
         #endregion
         #region Useless
@@ -506,7 +637,6 @@ namespace tempo
         private void Ticket2_Click(object sender, EventArgs e) { }
         private void AdminPanel_Click(object sender, EventArgs e) { }
         private void label24_Click(object sender, EventArgs e) { }
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e){}
         private void Payment_Click(object sender, EventArgs e){}
 
         #endregion
